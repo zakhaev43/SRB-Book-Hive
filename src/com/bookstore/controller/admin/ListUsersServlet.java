@@ -35,12 +35,7 @@ public class ListUsersServlet extends HttpServlet {
 		
 		UserServices userServices = new UserServices();
 		
-		List<Users> listUsers = userServices.listUser();
-		request.setAttribute("listUsers", listUsers);
-		
-		String listpage="user_list.jsp";
-	RequestDispatcher requestDispatcher=	 request.getRequestDispatcher(listpage);
-		requestDispatcher.forward(request, response);
+		userServices.listUser(request, response,null);
 	}
 
 	/**
