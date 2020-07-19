@@ -133,7 +133,7 @@ public class UserDAOTest {
 	
 	@Test
 	public void testFindByEmail() {
-		String email = "nam@codejava.net";
+		String email = "p";
 		Users user = userDAO.findByEmail(email);
 		
 		assertNotNull(user);

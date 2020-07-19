@@ -1,26 +1,29 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title> Manage Users -SRB BookStore Admin</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<title>Manage Users - Evergreen Bookstore Administration</title>
+	<link rel="stylesheet" href="../css/style.css" >
+	<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" src="../js/jquery.validate.min.js"></script>	
 </head>
 <body>
-<jsp:directive.include file= "header.jsp"/>
-
-
+	<jsp:directive.include file="header.jsp" />
+	
 	<div align="center">
-		<h2 class="pageheading">User Management</h2>
-		<h3><a href="user_form.jsp">Create New User </a></h3>
+		<h2 class="pageheading">Users Management</h1>
+		<h3><a href="user_form.jsp">Create New User</a></h3>
 	</div>
 	
-	<c:if test="${message!=null}">
-	
-	<div align ="center">
-	<h3><i>${message}</i></h3>
+	<c:if test="${message != null}">
+	<div align="center">
+		<h4 class="message">${message}</h4>
 	</div>
 	</c:if>
+	
 	<div align="center">
 		<table border="1" cellpadding="5">
 			<tr>
@@ -44,8 +47,21 @@
 			</c:forEach>
 		</table>
 	</div>
-
-
-<jsp:directive.include file= "footer.jsp"/>
+	
+	
+	<jsp:directive.include file="footer.jsp" />
+	
+	<script>
+		$(document).ready(function() {
+			$(".deleteLink").each(function() {
+				$(this).on("click", function() {
+					userId = $(this).attr("id");
+					if (confirm('Are you sure you want to delete the user with ID ' +  userId + '?')) {
+						window.location = 'delete_user?id=' + userId;
+					}					
+				});
+			});
+		});
+	</script>
 </body>
 </html>
