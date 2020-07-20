@@ -17,7 +17,7 @@ import org.junit.Test;
 
 import com.bookstore.entity.Users;
 
-public class UserDAOTest {
+public class UserDAOTest  extends BaseDAOTest{
 	private static UserDAO userDAO;
 	
 	@BeforeClass

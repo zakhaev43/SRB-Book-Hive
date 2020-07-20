@@ -26,11 +26,10 @@ public class UserServices {
 
 	}
 
-	public UserServices(HttpServletRequest request, HttpServletResponse response) {
+	public UserServices(EntityManager entityManager,HttpServletRequest request, HttpServletResponse response) {
 		this.request = request;
 		this.response = response;
-		entityManagerFactory = Persistence.createEntityManagerFactory("BookStoreWebsite");
-		entityManager = entityManagerFactory.createEntityManager();
+		this.entityManager=entityManager;
 		userDAO = new UserDAO(entityManager);
 
 	}
