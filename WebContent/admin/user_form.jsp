@@ -3,13 +3,44 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<title>Create New User</title>
 	<link rel="stylesheet" href="../css/style.css" >
-	<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
-	<script type="text/javascript" src="../js/jquery.validate.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.10.0/jquery.validate.js" type="text/javascript"></script>
 </head>
+<script type="text/javascript">
+
+	$(document).ready(function() {
+		$("#userForm").validate({
+			rules: {
+				email: {
+					required: true,
+					email: true
+				},
+		
+				fullname: "required",
+				password: "required",
+			},
+			
+			messages: {
+				email: {
+					required: "Please enter email",
+					email: "Please enter an valid email address"
+				},
+				
+				fullname: "Please enter full name",
+				password: "Please enter password"
+			}
+		});
+		
+		$("#buttonCancel").click(function() {
+			history.go(-1);
+		});
+	});
+</script>
 <body>
 	<jsp:directive.include file="header.jsp" />
 	
@@ -59,34 +90,5 @@
 
 	<jsp:directive.include file="footer.jsp" />
 </body>
-<script type="text/javascript">
 
-	$(document).ready(function() {
-		$("#userForm").validate({
-			rules: {
-				email: {
-					required: true,
-					email: true
-				},
-		
-				fullname: "required",
-				password: "required",
-			},
-			
-			messages: {
-				email: {
-					required: "Please enter email",
-					email: "Please enter an valid email address"
-				},
-				
-				fullname: "Please enter full name",
-				password: "Please enter password"
-			}
-		});
-		
-		$("#buttonCancel").click(function() {
-			history.go(-1);
-		});
-	});
-</script>
 </html>

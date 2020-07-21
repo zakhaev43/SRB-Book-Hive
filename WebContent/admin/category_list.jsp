@@ -7,8 +7,8 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<title>Manage Category - Evergreen Bookstore Administration</title>
 	<link rel="stylesheet" href="../css/style.css" >
-	<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
-	<script type="text/javascript" src="../js/jquery.validate.min.js"></script>	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.10.0/jquery.validate.js" type="text/javascript"></script>	
 </head>
 <body>
 	<jsp:directive.include file="header.jsp" />
@@ -39,7 +39,7 @@
 				<td>${cat.categoryId}</td>
 				<td>${cat.name}</td>
 				<td>
-					<a href="edit_categoryid=${cat.categoryId}">Edit</a> &nbsp;
+					<a href="edit_category?id=${cat.categoryId}">Edit</a> &nbsp;
 					<a href="javascript:void(0);" class="deleteLink" id="${cat.categoryId}">Delete</a>
 				</td>
 			</tr>
@@ -54,9 +54,9 @@
 		$(document).ready(function() {
 			$(".deleteLink").each(function() {
 				$(this).on("click", function() {
-					userId = $(this).attr("id");
-					if (confirm('Are you sure you want to delete the user with ID ' +  userId + '?')) {
-						window.location = 'delete_user?id=' + userId;
+					categoryId= $(this).attr("categoryid");
+					if (confirm('Are you sure you want to delete the user with ID ' +  categoryId+ '?')) {
+						window.location = 'delete_category?id=' + categoryId;
 					}					
 				});
 			});

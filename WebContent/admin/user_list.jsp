@@ -7,8 +7,8 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<title>Manage Users - Evergreen Bookstore Administration</title>
 	<link rel="stylesheet" href="../css/style.css" >
-	<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
-	<script type="text/javascript" src="../js/jquery.validate.min.js"></script>	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.10.0/jquery.validate.js" type="text/javascript"></script>
 </head>
 <body>
 	<jsp:directive.include file="header.jsp" />
@@ -41,7 +41,7 @@
 				<td>${user.fullName}</td>
 				<td>
 					<a href="edit_user?id=${user.userId}">Edit</a> &nbsp;
-					<a href="javascript:void(0);" class="deleteLink" id="${user.userId}">Delete</a>
+					<a href="javascript:voi;" class="deleteLink" id="${user.userId}">Delete</a>
 				</td>
 			</tr>
 			</c:forEach>

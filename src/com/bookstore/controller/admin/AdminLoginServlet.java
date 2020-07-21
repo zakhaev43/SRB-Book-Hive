@@ -1,7 +1,8 @@
-package com.bookstore.controller.admin.user;
+package com.bookstore.controller.admin;
 
 import java.io.IOException;
 
+import javax.persistence.EntityManager;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,28 +13,19 @@ import com.bookstore.controller.BaseServlet;
 import com.bookstore.service.UserServices;
 
 /**
- * Servlet implementation class CreateUserServlet
+ * Servlet implementation class login
  */
-@WebServlet("/admin/create_user")
-public class CreateUserServlet extends BaseServlet {
+@WebServlet("/admin/login")
+public class AdminLoginServlet extends BaseServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		
-	
-		
-	
-		UserServices userServices = new UserServices(entityManager,request,response);
-		userServices.createUser();
-		userServices.listUser( "New User has been  added successfully");
-		
-		
-		
-		
+		UserServices userServices = new UserServices(entityManager,request, response);
+		userServices.login();
 		
 	}
 

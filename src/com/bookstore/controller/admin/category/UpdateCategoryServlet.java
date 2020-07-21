@@ -1,4 +1,4 @@
-package com.bookstore.controller.admin.user;
+package com.bookstore.controller.admin.category;
 
 import java.io.IOException;
 
@@ -9,38 +9,30 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.bookstore.controller.BaseServlet;
-import com.bookstore.service.UserServices;
+import com.bookstore.service.CategoryServices;
 
 /**
- * Servlet implementation class DeleteUserServlet
+ * Servlet implementation class UpdateCategoryServlet
  */
-@WebServlet("/admin/delete_user")
-public class DeleteUserServlet extends BaseServlet {
+@WebServlet("/admin/update_category")
+public class UpdateCategoryServlet extends BaseServlet {
 	private static final long serialVersionUID = 1L;
-       
+
     /**
-     * @see HttpServlet#HttpServlet()
+     * Default constructor. 
      */
-    public DeleteUserServlet() {
-        super();
+    public UpdateCategoryServlet() {
         // TODO Auto-generated constructor stub
     }
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		UserServices userServices= new UserServices(entityManager,request, response);
-		userServices.deleteUser();
-	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		
+		CategoryServices categoryServices = new CategoryServices(entityManager,request, response);
+		categoryServices.updateCategory();
 	}
 
 }
