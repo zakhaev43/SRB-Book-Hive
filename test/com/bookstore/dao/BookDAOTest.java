@@ -46,8 +46,8 @@ public class BookDAOTest extends BaseDAOTest {
 
 		Book newBook = new Book();
 
-		Category category = new Category("Advanced Java");
-		category.setCategoryId(2);
+		Category category = new Category("Java EE");
+		category.setCategoryId(3);
 		newBook.setCategory(category);
 
 		newBook.setTitle("Effective Java (2nd Edition)");
@@ -63,7 +63,7 @@ public class BookDAOTest extends BaseDAOTest {
 		String imagePath = "C:\\Users\\Saifur Rahman\\3D Objects\\48094339n.JPG";
 
 		byte[] imageBytes = Files.readAllBytes(Paths.get(imagePath));
-		newBook.setImage(imageBytes);
+		newBook.setImage(imageBytes);             
 
 		Book createdBook = bookDao.create(newBook);
 
