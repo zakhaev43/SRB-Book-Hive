@@ -9,6 +9,8 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -17,48 +19,37 @@ import javax.servlet.http.Part;
 
 import com.bookstore.dao.BookDAO;
 import com.bookstore.dao.CategoryDAO;
+import com.bookstore.dao.UserDAO;
 import com.bookstore.entity.Book;
 import com.bookstore.entity.Category;
 
 public class BookServices {
+	private EntityManager entityManager;
 	private BookDAO bookDAO;
-	private CategoryDAO categoryDAO;
 	private HttpServletRequest request;
+	private CategoryDAO categoryDAO;
 	private HttpServletResponse response;
 
 	public BookServices(EntityManager entityManager, HttpServletRequest request, HttpServletResponse response) {
-		super();
+		this.entityManager = entityManager;
 		this.request = request;
 		this.response = response;
-		bookDAO = new BookDAO();
-		categoryDAO = new CategoryDAO(entityManager);
+		this.bookDAO = new BookDAO(entityManager);
+		this.categoryDAO = new CategoryDAO(entityManager);
 	}
-
+	
 	public void listBooks() throws ServletException, IOException {
 		listBooks(null);
 	}
-	
+
 	public void listBooks(String message) throws ServletException, IOException {
 		List<Book> listBooks = bookDAO.listAll();
 		request.setAttribute("listBooks", listBooks);
-		
 		if (message != null) {
 			request.setAttribute("message", message);
 		}
-		
-		String listPage = "book_list.jsp";
-		RequestDispatcher requestDispatcher = request.getRequestDispatcher(listPage);
-		requestDispatcher.forward(request, response);
-		
-	}
-	
-	public void showBookNewForm() throws ServletException, IOException {
-		List<Category> listCategory = categoryDAO.listAll();
-		request.setAttribute("listCategory", listCategory);
-		
-		String newPage = "book_form.jsp";
-		RequestDispatcher requestDispatcher = request.getRequestDispatcher(newPage);
-		requestDispatcher.forward(request, response);		
+		request.getRequestDispatcher("book_list.jsp").forward(request, response);
+
 	}
 
 	public void createBook() throws ServletException, IOException {
@@ -162,6 +153,14 @@ public class BookServices {
 		String message = "The book has been updated successfully.";
 		listBooks(message);
 	}
+	public void showBookNewForm() throws ServletException, IOException {
+		List<Category> listCategory = categoryDAO.listAll();
+		request.setAttribute("listCategory", listCategory);
+		
+		String newPage = "book_form.jsp";
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher(newPage);
+		requestDispatcher.forward(request, response);		
+	}
 
 	public void deleteBook() throws ServletException, IOException {
 		Integer bookId = Integer.parseInt(request.getParameter("id"));
@@ -172,18 +171,7 @@ public class BookServices {
 		listBooks(message);		
 	}
 
-	public void listBooksByCategory() throws ServletException, IOException {
-		int categoryId = Integer.parseInt(request.getParameter("id"));
-		List<Book> listBooks = bookDAO.listByCategory(categoryId);
-		Category category = categoryDAO.get(categoryId);
-		
-		request.setAttribute("listBooks", listBooks);
-		request.setAttribute("category", category);
-		
-		String listPage = "frontend/books_list_by_category.jsp";
-		RequestDispatcher requestDispatcher = request.getRequestDispatcher(listPage);
-		requestDispatcher.forward(request, response);		
-	}
+
 
 	public void viewBookDetail() throws ServletException, IOException {
 		Integer bookId = Integer.parseInt(request.getParameter("id"));
@@ -196,21 +184,5 @@ public class BookServices {
 		requestDispatcher.forward(request, response);
 	}
 
-	public void search() throws ServletException, IOException {
-		String keyword = request.getParameter("keyword");
-		List<Book> result = null; 
-				
-		if (keyword.equals("")) {
-			result = bookDAO.listAll();
-		} else {
-			result = bookDAO.search(keyword);
-		}
-		
-		request.setAttribute("keyword", keyword);
-		request.setAttribute("result", result);
-		
-		String resultPage = "frontend/search_result.jsp";
-		RequestDispatcher requestDispatcher = request.getRequestDispatcher(resultPage);
-		requestDispatcher.forward(request, response);		
-	}
+	
 }

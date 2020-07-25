@@ -12,31 +12,31 @@
 	<div id="headermenu">
 		<div>
 			<a href="list_users">
-				<img src="https://img.icons8.com/color/96/000000/user-group-woman-woman.png"/><br/>Users
+				<img src="../images/users.png" /><br/>Users
 			</a>
 		</div>
 		<div>
 			<a href="list_category">
-				<img src="https://img.icons8.com/color/96/000000/category.png"/><br/>Categories
+				<img src="../images/category.png" /><br/>Categories
 			</a>
 		</div>
 		<div>
 			<a href="list_books">
-				<img src="https://img.icons8.com/plasticine/100/000000/books.png"/> <br/>Books
+				<img src="../images/bookstack.png" /><br/>Books
 			</a>
 		</div>
 		<div>
 			<a href="list_customer">
-			<img src="https://img.icons8.com/color/96/000000/category.png"/><br/>Customers
+				<img src="../images/customer.png" /><br/>Customers
 			</a>
 		</div>
 		<div>
 			<a href="list_review">
-				<img src="https://img.icons8.com/color/96/000000/category.png"/><br/>Reviews
+				<img src="../images/review.png" /><br/>Reviews
 			</a>
 		</div>
 		<div>
-			<a href="list_order"><img src="https://img.icons8.com/color/96/000000/category.png"/><br/>
+			<a href="list_order"><img src="../images/order.png" /><br/>
 				Orders
 			</a>
 		</div>

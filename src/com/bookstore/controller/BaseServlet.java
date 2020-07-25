@@ -14,10 +14,9 @@ import com.bookstore.dao.CategoryDAO;
 /**
  * Servlet implementation class BeseServlet
  */
-@WebServlet("/")
+
 public abstract class BaseServlet  extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
 	protected EntityManagerFactory entityManagerFactory;
 	protected EntityManager entityManager;
 	//protected CategoryDAO categoryDAO;
