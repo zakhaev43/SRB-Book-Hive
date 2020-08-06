@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 
 import com.bookstore.entity.Users;
 
@@ -13,9 +14,7 @@ public class UserDAO extends JpaDAO<Users> implements GenericDAO<Users> {
 	public UserDAO() {
 	}
 
-	public UserDAO(EntityManager entityManager) {
-		// TODO Auto-generated constructor stub
-	}
+
 
 	public Users create(Users user) {
 		return super.create(user);
@@ -69,5 +68,7 @@ public class UserDAO extends JpaDAO<Users> implements GenericDAO<Users> {
 	public long count() {
 		return super.countWithNamedQuery("Users.countAll");
 	}
+	
+
 
 }

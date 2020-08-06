@@ -54,7 +54,7 @@
 		$(document).ready(function() {
 			$(".deleteLink").each(function() {
 				$(this).on("click", function() {
-					categoryId= $(this).attr("categoryid");
+					categoryId= $(this).attr("id");
 					if (confirm('Are you sure you want to delete the user with ID ' +  categoryId+ '?')) {
 						window.location = 'delete_category?id=' + categoryId;
 					}					

@@ -11,24 +11,22 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.bookstore.dao.BookDAO;
 import com.bookstore.dao.CategoryDAO;
 import com.bookstore.entity.Category;
 
 public class CategoryServices {
 	private EntityManagerFactory entityManagerFactory;
-	private EntityManager entityManager;
+	
 	private CategoryDAO categoryDAO;
 	private HttpServletRequest request;
 	private HttpServletResponse response;
 	
-	public CategoryServices( EntityManager entityManager ,HttpServletRequest request, HttpServletResponse response) {
+	public CategoryServices( HttpServletRequest request, HttpServletResponse response) {
 		
 		this.request = request;
 		this.response = response;
-		this.entityManager=entityManager;
-		entityManagerFactory = Persistence.createEntityManagerFactory("BookStoreWebsite");
-		entityManager = entityManagerFactory.createEntityManager();
-		categoryDAO = new CategoryDAO(entityManager);
+		categoryDAO = new CategoryDAO();
 	}
 	
 	public void listCategory() throws ServletException, IOException
@@ -114,9 +112,18 @@ public class CategoryServices {
 	public void deleteCategory() throws ServletException, IOException {
 	
 		int categoryId = Integer.parseInt(request.getParameter("id"));
+		BookDAO bookDAO = new BookDAO();
+		long numberOfBooks = bookDAO.countByCategory(categoryId);
+		String message;
 		
-		categoryDAO.delete(categoryId);
-		String message="The category with ID"+categoryId+"has been removed successfully";
+		if (numberOfBooks > 0) {
+			message = "Could not delete the category (ID: %d) because it currently contains some books.";
+			message = String.format(message, numberOfBooks);
+		} else {
+			categoryDAO.delete(categoryId);		
+			message = "The category with ID " + categoryId + " has been removed successfully.";
+		}
+		
 		listCategory(message);
 	}
 

@@ -15,7 +15,7 @@ import com.bookstore.service.BookServices;
  * Servlet implementation class DeleteBookServlet
  */
 @WebServlet("/admin/delete_book")
-public class DeleteBookServlet extends BaseServlet {
+public class DeleteBookServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
@@ -31,7 +31,7 @@ public class DeleteBookServlet extends BaseServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-	BookServices bookServices = new BookServices(entityManager,request,response);
+	BookServices bookServices = new BookServices(request,response);
 	
 		bookServices.deleteBook();
 	}

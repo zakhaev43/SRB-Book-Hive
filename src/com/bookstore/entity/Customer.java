@@ -10,6 +10,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -21,11 +23,17 @@ import javax.persistence.UniqueConstraint;
  */
 @Entity
 @Table(name = "customer", catalog = "bookstoredb", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
+@NamedQueries({
+	@NamedQuery(name = "Customer.findAll", query = "SELECT c FROM Customer c ORDER BY c.registerDate DESC"),
+	@NamedQuery(name="Customer.countAll", query="select count(c.email) from Customer c"),
+	@NamedQuery(name="Customer.findByEmail" ,query="select c from Customer c where c.email=:email" ),
+	@NamedQuery(name ="Customer.checkLogin", query="SELECT c from Customer c WHERE c.email=:email AND c.password=:password" )
+})
 public class Customer implements java.io.Serializable {
 
 	private Integer customerId;
 	private String email;
-	private String fullname;
+	private String fullName;
 	private String address;
 	private String city;
 	private String country;
@@ -39,10 +47,10 @@ public class Customer implements java.io.Serializable {
 	public Customer() {
 	}
 
-	public Customer(String email, String fullname, String address, String city, String country, String phone,
+	public Customer(String email, String fullName, String address, String city, String country, String phone,
 			String zipcode, String password, Date registerDate) {
 		this.email = email;
-		this.fullname = fullname;
+		this.fullName = fullName;
 		this.address = address;
 		this.city = city;
 		this.country = country;
@@ -52,10 +60,10 @@ public class Customer implements java.io.Serializable {
 		this.registerDate = registerDate;
 	}
 
-	public Customer(String email, String fullname, String address, String city, String country, String phone,
+	public Customer(String email, String fullName, String address, String city, String country, String phone,
 			String zipcode, String password, Date registerDate, Set<Review> reviews, Set<BookOrder> bookOrders) {
 		this.email = email;
-		this.fullname = fullname;
+		this.fullName = fullName;
 		this.address = address;
 		this.city = city;
 		this.country = country;
@@ -88,13 +96,13 @@ public class Customer implements java.io.Serializable {
 		this.email = email;
 	}
 
-	@Column(name = "fullname", nullable = false, length = 45)
-	public String getFullname() {
-		return this.fullname;
+	@Column(name = "fullName", nullable = false, length = 45)
+	public String getFullName() {
+		return this.fullName;
 	}
 
-	public void setFullname(String fullname) {
-		this.fullname = fullname;
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
 	}
 
 	@Column(name = "address", nullable = false, length = 128)

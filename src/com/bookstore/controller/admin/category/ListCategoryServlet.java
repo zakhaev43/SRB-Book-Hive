@@ -14,7 +14,7 @@ import com.bookstore.service.CategoryServices;
  * Servlet implementation class ListCategoryServlet
  */
 @WebServlet("/admin/list_category")
-public class ListCategoryServlet extends BaseServlet {
+public class ListCategoryServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
@@ -32,7 +32,7 @@ public class ListCategoryServlet extends BaseServlet {
 	
 		
 		response.getWriter().println("Salam bro");
-		CategoryServices categoryServices= new CategoryServices(entityManager, request, response);
+		CategoryServices categoryServices= new CategoryServices( request, response);
 		categoryServices.listCategory();
 		
 	}

@@ -21,7 +21,7 @@ import com.bookstore.service.BookServices;
 		maxRequestSize = 1024 * 1024	// 1 MB 
 )
 @WebServlet("/admin/update_book")
-public class UpdateBookServlet extends BaseServlet {
+public class UpdateBookServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
@@ -37,7 +37,7 @@ public class UpdateBookServlet extends BaseServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		BookServices bookServices= new BookServices(entityManager, request, response);
+		BookServices bookServices= new BookServices( request, response);
 		bookServices.updateBook();
 	}
 

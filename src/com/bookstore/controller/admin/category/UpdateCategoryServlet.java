@@ -15,7 +15,7 @@ import com.bookstore.service.CategoryServices;
  * Servlet implementation class UpdateCategoryServlet
  */
 @WebServlet("/admin/update_category")
-public class UpdateCategoryServlet extends BaseServlet {
+public class UpdateCategoryServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
@@ -31,7 +31,7 @@ public class UpdateCategoryServlet extends BaseServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		CategoryServices categoryServices = new CategoryServices(entityManager,request, response);
+		CategoryServices categoryServices = new CategoryServices(request, response);
 		categoryServices.updateCategory();
 	}
 

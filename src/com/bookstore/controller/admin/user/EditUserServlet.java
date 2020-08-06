@@ -15,7 +15,7 @@ import com.bookstore.service.UserServices;
  * Servlet implementation class EditUserServlet
  */
 @WebServlet("/admin/edit_user")
-public class EditUserServlet extends BaseServlet {
+public class EditUserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
@@ -32,7 +32,7 @@ public class EditUserServlet extends BaseServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	
-		UserServices userServices = new UserServices(entityManager,request, response);
+		UserServices userServices = new UserServices(request, response);
 		userServices.editUser();
 		
 	}

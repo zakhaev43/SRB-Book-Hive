@@ -15,7 +15,7 @@ import com.bookstore.service.BookServices;
  * Servlet implementation class NewBookServlet
  */
 @WebServlet("/admin/new_book")
-public class NewBookServlet extends BaseServlet {
+public class NewBookServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -31,7 +31,7 @@ public class NewBookServlet extends BaseServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
-BookServices bookServices = new BookServices(entityManager,request, response);
+BookServices bookServices = new BookServices(request, response);
 bookServices.showBookNewForm();
 
 	}

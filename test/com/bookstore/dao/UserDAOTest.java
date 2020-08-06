@@ -17,12 +17,17 @@ import org.junit.Test;
 
 import com.bookstore.entity.Users;
 
-public class UserDAOTest  extends BaseDAOTest{
+public class UserDAOTest  {
 	private static UserDAO userDAO;
 	
 	@BeforeClass
-	public static void setUpClass() throws Exception {
+	public static void setUpBeforeClass() throws Exception {
 		userDAO = new UserDAO();		
+	}
+	
+	@AfterClass
+	public static void tearDownAfterClass() throws Exception {
+		userDAO.close();
 	}
 	
 	@Test
@@ -139,8 +144,5 @@ public class UserDAOTest  extends BaseDAOTest{
 		assertNotNull(user);
 	}
 	
-	@AfterClass
-	public static void tearDownAfterClass() throws Exception {
-		userDAO.close();
-	}
+	
 }

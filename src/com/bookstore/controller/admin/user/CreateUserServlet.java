@@ -15,7 +15,7 @@ import com.bookstore.service.UserServices;
  * Servlet implementation class CreateUserServlet
  */
 @WebServlet("/admin/create_user")
-public class CreateUserServlet extends BaseServlet {
+public class CreateUserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -27,7 +27,7 @@ public class CreateUserServlet extends BaseServlet {
 	
 		
 	
-		UserServices userServices = new UserServices(entityManager,request,response);
+		UserServices userServices = new UserServices(request,response);
 		userServices.createUser();
 		userServices.listUser( "New User has been  added successfully");
 		

@@ -23,10 +23,7 @@ public class JpaDAO<E> {
 
 	}
 
-	public JpaDAO(EntityManager entityManager) {
-		super();
-		this.entityManager = entityManager;
-	}
+
 
 	public E create(E entity) {
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
