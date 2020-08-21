@@ -15,7 +15,7 @@
 <div align="center">
 
 
-<h1>New Books:</h1>
+<h1>New Books</h1>
 <div class="book-group">
 		<c:forEach items="${listNewBooks}" var="book">
 			<div class="book">

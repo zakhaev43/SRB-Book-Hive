@@ -40,7 +40,11 @@ table {
 	border: 1px solid black;
 	border-collapse: collapse;
 }
-
+table.mama {
+	
+	border: 0;
+	
+	}
 th, td {
 	padding: 8px;
 }
@@ -92,6 +96,7 @@ input {
 
 div.center {
 	text-align: center;
+	
 }
 
 div.book {

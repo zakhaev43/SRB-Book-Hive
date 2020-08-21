@@ -22,14 +22,17 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import com.bookstore.entity.Book;
+import com.bookstore.entity.BookOrder;
 import com.bookstore.entity.Category;
 
 public class BookDAOTest  {
 	private static BookDAO bookDao;
+	private static OrderDAO orderDAO;
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		bookDao = new BookDAO();
+		orderDAO= new OrderDAO();
 	}
 
 	@AfterClass
@@ -273,4 +276,16 @@ public class BookDAOTest  {
 //		
 //		assertEquals(4, topFavoredBooks.size());
 //	}
+	
+	@Test
+	public void testlistbyCustomerNoOrders()
+	{
+		Integer customerId=2;
+		List<BookOrder> listOrders= orderDAO.listByCustomer(customerId);
+		
+		assertTrue(!listOrders.isEmpty());
+		
+		
+		
+	}
 }
