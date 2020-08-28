@@ -145,7 +145,7 @@
 				rules: {	
 					recipientName: "required",
 					
-					phone: "required",
+					recipientPhone: "required",
 					shippingAddress: "required",
 					
 					
@@ -160,8 +160,8 @@
 				messages: {
 					recipientName: "Please enter first name",
 				
-					phone: "Please enter phone number",
-					shippingAddress: "Please enter address line 2",
+					recipientPhone: "Please enter phone number",
+					shippingAddress: "Please enter the shipping address",
 					
 					<c:forEach items="${order.orderDetails}" var="book" varStatus="status">
 						quantity${status.index + 1}: { 
