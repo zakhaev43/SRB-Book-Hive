@@ -41,7 +41,7 @@ Write reviews for books
 Place order (Checkout)
 
 
-Here we haev used, 
+Here i have used, 
            Hibernate framework with JPA for the data access layer
            Java Servlet for the controller layer
            JSP and JSTL for the view layer
