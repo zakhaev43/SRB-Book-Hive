@@ -20,7 +20,7 @@ The E-Commerce Bookshop website provides book enthusiasts with a user-friendly i
 
 ## Features
 
-### Back-End (Admin)
+### Front-End (Admin)
 
 The admin section of the website comes equipped with the following features:
 
@@ -32,7 +32,7 @@ The admin section of the website comes equipped with the following features:
 6. **Order Management:** Admin has the ability to track and manage customer orders.
 7. **Statistics (Admin Dashboard):** Admin can view essential statistics and insights about the website's performance.
 
-### Front-End
+### Front-End (Guest/User)
 
 The front-end of the website offers an enjoyable shopping experience for customers with the following features:
 
